@@ -1,0 +1,20 @@
+runtime: python
+env: flex
+entrypoint: gunicorn -b :$PORT main:app
+
+env_variables:
+  SECRET_KEY: "key"
+  
+runtime_config:
+  operating_system: "ubuntu18"
+  runtime_version: "3.8"
+
+manual_scaling:
+  instances: 1
+resources:
+  cpu: 16
+  memory_gb: 16
+  disk_size_gb: 50
+
+network:
+  session_affinity: true
